@@ -2,7 +2,7 @@
   "name": "linter-gjslint",
   "main": "./lib/linter-gjslint",
   "version": "0.0.0",
-  "description": "A short description of your package",
+  "description": "A short description of your package (not ready)",
   "activationEvents": ["linter-gjslint:toggle"],
   "repository": "https://github.com/AtomLinter/linter-gjslint",
   "license": "MIT",
