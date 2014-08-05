@@ -1,14 +1,15 @@
 {
   "name": "linter-gjslint",
   "main": "./lib/linter-gjslint",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A short description of your package (not ready)",
-  "activationEvents": ["linter-gjslint:toggle"],
+  "activationEvents": [
+    "linter-gjslint:toggle"
+  ],
   "repository": "https://github.com/AtomLinter/linter-gjslint",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
