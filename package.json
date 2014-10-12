@@ -6,7 +6,7 @@
     "linter-gjslint:toggle"
   ],
   "version": "0.0.2",
-  "description": "A short description of your package",
+  "description": "Linter plugin for JavaScript, using gjslint (Google Closure Linter)",
   "repository": "https://github.com/AtomLinter/linter-gjslint",
   "license": "MIT",
   "engines": {
