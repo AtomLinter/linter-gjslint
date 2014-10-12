@@ -1,8 +1,10 @@
 {
   "name": "linter-gjslint",
-  "main": "./lib/linter-gjslint",
+  "main": "./lib/init",
+  "linter-package": true,
+  "activationEvents": [],
   "version": "0.0.1",
-  "description": "A short description of your package (not ready)",
+  "description": "A short description of your package",
   "activationEvents": [
     "linter-gjslint:toggle"
   ],
