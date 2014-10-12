@@ -2,12 +2,11 @@
   "name": "linter-gjslint",
   "main": "./lib/init",
   "linter-package": true,
-  "activationEvents": [],
-  "version": "0.0.1",
-  "description": "A short description of your package",
   "activationEvents": [
     "linter-gjslint:toggle"
   ],
+  "version": "0.0.2",
+  "description": "A short description of your package",
   "repository": "https://github.com/AtomLinter/linter-gjslint",
   "license": "MIT",
   "engines": {
