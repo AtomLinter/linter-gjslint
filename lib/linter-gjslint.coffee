@@ -28,10 +28,15 @@ class LinterGjslint extends Linter
     if config
       @cmd += " --flagfile #{config} ~"
 
+    atom.config.observe 'linter-gjslint.gjslintIgnoreList', =>
+      ignoreList = atom.config.get 'linter-gjslint.gjslintIgnoreList'
+      @cmd += " --disable " + ignoreList.join()
+
     atom.config.observe 'linter-gjslint.gjslintExecutablePath', =>
       @executablePath = atom.config.get 'linter-gjslint.gjslintExecutablePath'
 
   destroy: ->
     atom.config.unobserve 'linter-gjslint.gjslintExecutablePath'
+    atom.config.unobserve 'linter-gjslint.gjslintIgnoreList'
 
 module.exports = LinterGjslint
