@@ -39,5 +39,10 @@ Please note that modifications should follow these coding guidelines:
 
 Thank you for helping out!
 
+
+## Changelog
+See [release notes](https://github.com/AtomLinter/linter-gjslint/releases).
+
+
 ## Donation
 [![Share the love!](https://chewbacco-stuff.s3.amazonaws.com/donate.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KXUYS4ARNHCN8)
