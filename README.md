@@ -41,7 +41,7 @@ Thank you for helping out!
 
 
 ## Changelog
-See [release notes](https://github.com/AtomLinter/linter-gjslint/releases).
+See all notable changes in [here](https://github.com/AtomLinter/linter-gjslint/releases).
 
 
 ## Donation
