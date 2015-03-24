@@ -5,7 +5,7 @@
   "activationEvents": [
     "linter-gjslint:toggle"
   ],
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Linter plugin for JavaScript, using gjslint (Google Closure Linter)",
   "repository": "https://github.com/AtomLinter/linter-gjslint",
   "license": "MIT",
