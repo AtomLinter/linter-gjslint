@@ -30,7 +30,8 @@ class LinterGjslint extends Linter
 
     atom.config.observe 'linter-gjslint.gjslintIgnoreList', =>
       ignoreList = atom.config.get 'linter-gjslint.gjslintIgnoreList'
-      @cmd += " --disable " + ignoreList.join()
+      if ignoreList?
+        @cmd += " --disable " + ignoreList.join()
 
     atom.config.observe 'linter-gjslint.gjslintExecutablePath', =>
       @executablePath = atom.config.get 'linter-gjslint.gjslintExecutablePath'
