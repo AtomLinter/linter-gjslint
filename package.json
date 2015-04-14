@@ -2,9 +2,7 @@
   "name": "linter-gjslint",
   "main": "./lib/init",
   "linter-package": true,
-  "activationEvents": [
-    "linter-gjslint:toggle"
-  ],
+  "activationEvents": [],
   "version": "0.0.4",
   "description": "Linter plugin for JavaScript, using gjslint (Google Closure Linter)",
   "repository": "https://github.com/AtomLinter/linter-gjslint",
