@@ -37,7 +37,7 @@ class LinterGjslint extends Linter
   processMessage: (message, callback) ->
     messages = []
     regex = XRegExp @regex, @regexFlags
-    for msg in message.split(/\nLine\s/)
+    for msg in message.split(/\n(Line|Found)\s/)
       XRegExp.forEach msg, regex, (match, i) =>
         messages.push(@createMessage(match))
       , this
