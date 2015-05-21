@@ -2,7 +2,7 @@
   "name": "linter-gjslint",
   "main": "./lib/init",
   "linter-package": true,
-  "activationEvents": [
+  "activationCommands": [
     "linter-gjslint:toggle"
   ],
   "version": "0.0.4",
