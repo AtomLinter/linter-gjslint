@@ -37,6 +37,7 @@ class LinterGjslint extends Linter
       @executablePath = atom.config.get 'linter-gjslint.gjslintExecutablePath'
 
   destroy: ->
+    super
     @gjslintIgnoreListListener.dispose()
     @gjslintExecutablePathListener.dispose()
 
