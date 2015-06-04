@@ -1,3 +1,4 @@
+{XRegExp} = require 'xregexp'
 linterPath = atom.packages.getLoadedPackage('linter').path
 Linter = require "#{linterPath}/lib/linter"
 findFile = require "#{linterPath}/lib/util"
@@ -13,11 +14,8 @@ class LinterGjslint extends Linter
 
   linterName: 'gjslint'
 
-
   # A regex pattern used to extract information from the executable's output.
-  regex:
-    'Line (?<line>\\d+), ' +
-    '((?<error>E)|(?<warning>W)):\\d+: (?<message>.+?)\n'
+  regex: '^(?<line>\\d+), ((?<error>E)|(?<warning>W)):\\d+: (?<message>.+)$'
 
   regexFlags: 's'
 
@@ -35,6 +33,15 @@ class LinterGjslint extends Linter
 
     @gjslintExecutablePathListener = atom.config.observe 'linter-gjslint.gjslintExecutablePath', =>
       @executablePath = atom.config.get 'linter-gjslint.gjslintExecutablePath'
+
+  processMessage: (message, callback) ->
+    messages = []
+    regex = XRegExp @regex, @regexFlags
+    for msg in message.split(/\n(Line|Found)\s/)
+      XRegExp.forEach msg, regex, (match, i) =>
+        messages.push(@createMessage(match))
+      , this
+    callback messages
 
   destroy: ->
     super
