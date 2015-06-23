@@ -13,7 +13,7 @@ module.exports =
       default: false
     gjslintClosurizedNamespaces:
       type: 'array'
-      default: ['goog']
+      default: []
       items:
         type: 'string'
 
