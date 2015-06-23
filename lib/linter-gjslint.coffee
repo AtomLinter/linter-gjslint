@@ -36,9 +36,21 @@ class LinterGjslint extends Linter
     @gjslintExecutablePathListener = atom.config.observe 'linter-gjslint.gjslintExecutablePath', =>
       @executablePath = atom.config.get 'linter-gjslint.gjslintExecutablePath'
 
+    @gjslintStrictModeListener = atom.config.observe 'linter-gjslint.gjslintStrictMode', =>
+      strictMode = atom.config.get 'linter-gjslint.gjslintStrictMode'
+      if strictMode
+        @cmd += " --strict "
+
+    @gjslintClosurizedNamespacesListener = atom.config.observe 'linter-gjslint.gjslintClosurizedNamespaces', =>
+      closurizedNamespaces = atom.config.get 'linter-gjslint.gjslintClosurizedNamespaces'
+      if Array.isArray(closurizedNamespaces) and closurizedNamespaces.length > 0
+        @cmd += " --closurized_namespaces " + closurizedNamespaces.join(',')
+
   destroy: ->
     super
     @gjslintIgnoreListListener.dispose()
     @gjslintExecutablePathListener.dispose()
+    @gjslintStrictModeListener.dispose()
+    @gjslintClosurizedNamespacesListener.dispose()
 
 module.exports = LinterGjslint
