@@ -8,6 +8,14 @@ module.exports =
       default: []
       items:
         type: 'string'
+    gjslintStrictMode:
+      type: 'boolean'
+      default: false
+    gjslintClosurizedNamespaces:
+      type: 'array'
+      default: ['goog']
+      items:
+        type: 'string'
 
   activate: ->
     console.log 'activate linter-gjslint'
