@@ -18,7 +18,6 @@ module.exports =
     @subscriptions.add atom.config.observe 'linter-gjslint.executablePath',
       (executablePath) =>
         @executablePath = executablePath
-    console.log 'activate linter-gjslint'
   deactivate: ->
     @subscriptions.dispose()
   provideLinter: ->
@@ -45,7 +44,6 @@ module.exports =
             return [] unless lines.length
             return lines.map (msg) ->
               res = regex.exec(msg)
-              console.log(msg, res)
               [all, line, code, text] = res
               line = parseInt(line, 10)
               return {
