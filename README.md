@@ -8,7 +8,7 @@ This linter plugin for [Linter](https://github.com/AtomLinter/Linter) provides a
 Before using this plugin, you must ensure that `gjslint` is installed on your system. To install `gjslint`, read [this](https://developers.google.com/closure/utilities/docs/linter_howto).
 
 ## Installation
-Run `amp install linter-gjslint` or search for `linter-gjslint` in atom package manager.
+Run `amp install linter-gjslint` or search for `linter-gjslint` in Atom package manager.
 
 ## Settings
 You can configure linter-gjslint by editing ~/.atom/config.cson (choose Open Your Config in Atom menu):
