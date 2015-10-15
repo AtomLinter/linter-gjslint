@@ -1,12 +1,13 @@
 {CompositeDisposable} = require 'atom'
 {findFile, exec, tempFile} = helpers = require 'atom-linter'
+path = require 'path'
 
 module.exports =
   config:
     executablePath:
       type: 'string'
       title: 'gjslint executable path'
-      default: '/usr/local/bin/gjslint'
+      default: 'gjslint'
     gjslintIgnoreList:
       type: 'array'
       default: []
@@ -37,21 +38,19 @@ module.exports =
             tmpFilePath
           ]
           return helpers.exec(@executablePath, params, {cwd}).then (stdout) ->
-            regex = /^Line\s(\d*)\, E\:(\d*):\s(.*)$/
+            regex = /Line\s(\d+), E:(\d+):\s(.+)/
             lines = stdout.split('\n').filter (line) ->
-              line.indexOf('Line') == 0
+              line.indexOf('Line') is 0
 
             return [] unless lines.length
             return lines.map (msg) ->
               res = regex.exec(msg)
               [all, line, code, text] = res
               line = parseInt(line, 10)
+              text = 'E:' + code + ' - ' + text
               return {
                 text: text,
                 type: 'error',
                 filePath: filePath,
-                range: [
-                  [line - 1, 0],
-                  [line - 1, 1]
-                ]
+                range: helpers.rangeFromLineNumber(editor, line - 1)
               }
