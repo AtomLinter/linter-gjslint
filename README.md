@@ -3,23 +3,19 @@ linter-gjslint
 
 This linter plugin for [Linter](https://github.com/AtomLinter/Linter) provides an interface to [gjslint](https://developers.google.com/closure/utilities/). It will be used with files that have the “JavaScript” syntax.
 
-## Installation
-Linter package must be installed in order to use this plugin. If Linter is not installed, please follow the instructions [here](https://github.com/AtomLinter/Linter).
 
 ### gjslint installation
 Before using this plugin, you must ensure that `gjslint` is installed on your system. To install `gjslint`, read [this](https://developers.google.com/closure/utilities/docs/linter_howto).
 
-### Plugin installation
-```
-$ apm install linter-gjslint
-```
+## Installation
+Run `amp install linter-gjslint` or search for `linter-gjslint` in atom package manager.
 
 ## Settings
 You can configure linter-gjslint by editing ~/.atom/config.cson (choose Open Your Config in Atom menu):
 ```
 'linter-gjslint':
-  'gjslintExecutablePath': '' #gjslint path. run 'which gjslint' to find the path
-  'gjslintIgnoreList': [] #gjslint ignore codes from http://goo.gl/OhYHYl
+  'executablePath': '' #gjslint path. run 'which gjslint' to find the path
+  'gjslintIgnoreList': [] # Currently not implemented: gjslint ignore codes from http://goo.gl/OhYHYl
 ```
 
 ## Contributing
