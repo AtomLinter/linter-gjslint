@@ -1,7 +1,7 @@
 {
   "name": "linter-gjslint",
   "main": "./lib/init",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "description": "Linter plugin for JavaScript, using gjslint (Google Closure Linter)",
   "repository": "https://github.com/AtomLinter/linter-gjslint",
   "license": "MIT",
