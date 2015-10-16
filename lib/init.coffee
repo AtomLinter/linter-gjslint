@@ -39,7 +39,7 @@ module.exports =
             tmpFilePath
           ]
           return helpers.exec(@executablePath, params, {cwd}).then (stdout) ->
-            regex = /Line\s(\d+), E:(\d+):\s(.+)/
+            regex = /Line\s(\d+), E:([^:]+):\s(.+)/
             lines = stdout.split('\n').filter (line) ->
               line.indexOf('Line') is 0
 
