@@ -17,7 +17,7 @@ You can configure linter-gjslint by editing ~/.atom/config.cson (choose Open You
   'executablePath': '' #gjslint path. run 'which gjslint' to find the path
   'gjslintIgnoreList': [] # Currently not implemented: gjslint ignore codes from http://goo.gl/OhYHYl
   'flags': [
-    '--flagfile=.gjslintrc'
+    '--flagfile=.gjslintrc',
     '--strict'
   ]
 ]
