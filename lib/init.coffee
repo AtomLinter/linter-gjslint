@@ -1,6 +1,7 @@
 {CompositeDisposable} = require 'atom'
 {findFile, exec, tempFile} = helpers = require 'atom-linter'
 path = require 'path'
+XRegExp = require 'xregexp'
 
 module.exports =
   config:
@@ -29,6 +30,15 @@ module.exports =
         @flags = flags
   deactivate: ->
     @subscriptions.dispose()
+  buildMsg: (match, filePath, range) ->
+    text = 'E:' + match.code + ' - ' + match.message
+    return {
+      text: text
+      type: 'error'
+      filePath: filePath
+      range: range
+    }
+
   provideLinter: ->
     helpers = require('atom-linter')
     provider =
@@ -46,20 +56,19 @@ module.exports =
             '--quiet',
             tmpFilePath
           ]
-          return helpers.exec(@executablePath, params, {cwd}).then (stdout) ->
-            regex = /Line\s(\d+), E:([^:]+):\s(.+)/
-            lines = stdout.split('\n').filter (line) ->
-              line.indexOf('Line') is 0
+          return helpers.exec(@executablePath, params, {cwd}).then (stdout) =>
+            regex = XRegExp '^(?<line>\\d+), E:(?<code>[^:]+): (?<message>.+)$',
+              's'
+
+            lines = stdout.split(/\nLine\s/)
 
             return [] unless lines.length
-            return lines.map (msg) ->
-              res = regex.exec(msg)
-              [all, line, code, text] = res
-              line = parseInt(line, 10)
-              text = 'E:' + code + ' - ' + text
-              return {
-                text: text,
-                type: 'error',
-                filePath: filePath,
-                range: helpers.rangeFromLineNumber(editor, line - 1)
-              }
+
+            messages = []
+
+            lines.forEach (msg) =>
+              XRegExp.forEach msg, regex, (match, i) =>
+                range = helpers.rangeFromLineNumber(editor, match.line - 1)
+                messages.push @buildMsg(match, filePath, range)
+
+            return messages
