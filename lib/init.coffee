@@ -13,13 +13,20 @@ module.exports =
       default: []
       items:
         type: 'string'
-
+    flags:
+      type: 'array'
+      default: []
+      items:
+        type: 'string'
   activate: ->
     require('atom-package-deps').install('linter-gjslint')
     @subscriptions = new CompositeDisposable
     @subscriptions.add atom.config.observe 'linter-gjslint.executablePath',
       (executablePath) =>
         @executablePath = executablePath
+    @subscriptions.add atom.config.observe 'linter-gjslint.flags',
+      (flags) =>
+        @flags = flags
   deactivate: ->
     @subscriptions.dispose()
   provideLinter: ->
@@ -33,7 +40,8 @@ module.exports =
         filePath = editor.getPath()
         cwd = path.dirname(filePath)
         tempFile path.basename(filePath), editor.getText(), (tmpFilePath) =>
-          params = [
+          params = @flags || []
+          params = params.concat [
             '--nobeep',
             '--quiet',
             tmpFilePath
