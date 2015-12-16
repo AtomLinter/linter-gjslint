@@ -10,6 +10,8 @@ module.exports =
       title: 'gjslint executable path'
       default: 'gjslint'
     gjslintIgnoreList:
+      title: 'Errors to ignore'
+      description: 'Separated by comma.'
       type: 'array'
       default: []
       items:
@@ -20,11 +22,14 @@ module.exports =
       items:
         type: 'string'
   activate: ->
-    require('atom-package-deps').install()
+    require('atom-package-deps').install('linter-gjslint')
     @subscriptions = new CompositeDisposable
     @subscriptions.add atom.config.observe 'linter-gjslint.executablePath',
       (executablePath) =>
         @executablePath = executablePath
+    @subscriptions.add atom.config.observe 'linter-gjslint.gjslintIgnoreList',
+      (gjslintIgnoreList) =>
+        @gjslintIgnoreList = gjslintIgnoreList
     @subscriptions.add atom.config.observe 'linter-gjslint.flags',
       (flags) =>
         @flags = flags
@@ -51,6 +56,9 @@ module.exports =
         cwd = path.dirname(filePath)
         tempFile path.basename(filePath), editor.getText(), (tmpFilePath) =>
           params = @flags || []
+          if @gjslintIgnoreList.length != 0
+            errorsToDisable = @gjslintIgnoreList.join ','
+            params = params.concat ('--disable=' + errorsToDisable)
           params = params.concat [
             '--nobeep',
             '--quiet',
