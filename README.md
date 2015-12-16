@@ -11,14 +11,17 @@ Before using this plugin, you must ensure that `gjslint` is installed on your sy
 Run `amp install linter-gjslint` or search for `linter-gjslint` in Atom package manager.
 
 ## Settings
-You can configure linter-gjslint by editing ~/.atom/config.cson (choose Open Your Config in Atom menu):
+You can configure linter-gjslint by accessing the options in File > Settings > Packages.<br>
+Or by editing ~/.atom/config.cson (choose Open Your Config in Atom menu):
 ```
-'linter-gjslint':
-  'executablePath': '' #gjslint path. run 'which gjslint' to find the path
-  'gjslintIgnoreList': [] # Currently not implemented: gjslint ignore codes from http://goo.gl/OhYHYl
-  'flags': [
-    '--flagfile=.gjslintrc',
-    '--strict'
+"linter-gjslint":
+   executablePath: "" #gjslint path. run 'which gjslint' to find the path
+   gjslintIgnoreList: [
+    "110"
+  ] # gjslint ignore codes from http://goo.gl/OhYHYl
+  "flags": [
+    "--flagfile=.gjslintrc"
+    "--strict"
   ]
 ]
 ```
