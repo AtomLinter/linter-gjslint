@@ -10,6 +10,8 @@ module.exports =
       title: 'gjslint executable path'
       default: 'gjslint'
     gjslintIgnoreList:
+      title: 'Google closure-linter error code to ignore'
+      description: 'Codes from https://goo.gl/VAdwHE separated by commas.'
       type: 'array'
       default: []
       items:
@@ -25,6 +27,9 @@ module.exports =
     @subscriptions.add atom.config.observe 'linter-gjslint.executablePath',
       (executablePath) =>
         @executablePath = executablePath
+    @subscriptions.add atom.config.observe 'linter-gjslint.gjslintIgnoreList',
+      (gjslintIgnoreList) =>
+        @gjslintIgnoreList = gjslintIgnoreList
     @subscriptions.add atom.config.observe 'linter-gjslint.flags',
       (flags) =>
         @flags = flags
@@ -51,6 +56,9 @@ module.exports =
         cwd = path.dirname(filePath)
         tempFile path.basename(filePath), editor.getText(), (tmpFilePath) =>
           params = @flags || []
+          if @gjslintIgnoreList.length != 0
+            errorsToDisable = @gjslintIgnoreList.join ','
+            params = params.concat ('--disable=' + errorsToDisable)
           params = params.concat [
             '--nobeep',
             '--quiet',
