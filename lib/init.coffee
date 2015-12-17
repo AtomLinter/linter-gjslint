@@ -10,8 +10,8 @@ module.exports =
       title: 'gjslint executable path'
       default: 'gjslint'
     gjslintIgnoreList:
-      title: 'Errors to ignore'
-      description: 'Separated by comma.'
+      title: 'Google closure-linter error code to ignore'
+      description: 'Codes from https://goo.gl/VAdwHE separated by commas.'
       type: 'array'
       default: []
       items:
