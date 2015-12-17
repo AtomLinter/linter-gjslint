@@ -13,7 +13,7 @@ Run `amp install linter-gjslint` or search for `linter-gjslint` in Atom package 
 ## Settings
 You can configure linter-gjslint by accessing the options in File > Settings > Packages.<br>
 Or by editing ~/.atom/config.cson (choose Open Your Config in Atom menu):
-```
+```CoffeeScript
 "linter-gjslint":
    executablePath: "" #gjslint path. run 'which gjslint' to find the path
    gjslintIgnoreList: [
