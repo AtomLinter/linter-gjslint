@@ -16,9 +16,7 @@ Or by editing ~/.atom/config.cson (choose Open Your Config in Atom menu):
 ```CoffeeScript
 "linter-gjslint":
    executablePath: "" #gjslint path. run 'which gjslint' to find the path
-   gjslintIgnoreList: [
-    "110"
-  ] # gjslint ignore codes from http://goo.gl/OhYHYl
+   gjslintIgnoreList: [] # gjslint ignore codes from http://goo.gl/OhYHYl
   "flags": [
     "--flagfile=.gjslintrc"
     "--strict"
