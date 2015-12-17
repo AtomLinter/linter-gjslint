@@ -15,8 +15,8 @@ You can configure linter-gjslint by accessing the options in File > Settings > P
 Or by editing ~/.atom/config.cson (choose Open Your Config in Atom menu):
 ```CoffeeScript
 "linter-gjslint":
-   executablePath: "" #gjslint path. run 'which gjslint' to find the path
-   gjslintIgnoreList: [] # gjslint ignore codes from https://goo.gl/VAdwHE
+  executablePath: "" #gjslint path. run 'which gjslint' to find the path
+  gjslintIgnoreList: [] # gjslint ignore codes from https://goo.gl/VAdwHE
   "flags": [
     "--flagfile=.gjslintrc"
     "--strict"
