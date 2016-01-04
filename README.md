@@ -13,7 +13,7 @@ system. To install `gjslint`, read [this](https://developers.google.com/closure/
 
 ### Plugin installation
 
-Run `amp install linter-gjslint` or search for `linter-gjslint` in Atom package
+Run `apm install linter-gjslint` or search for `linter-gjslint` in Atom package
 manager.
 
 ## Settings
