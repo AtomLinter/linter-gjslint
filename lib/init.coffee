@@ -16,6 +16,13 @@ module.exports =
       default: []
       items:
         type: 'string'
+    gjslintCustomJsDocTagsList:
+      title: 'Google closure-linter custom JsDoc tags'
+      description: 'Add a list of custom JsDoc tags to be accepted by gjslinter, separated by commas.'
+      type: 'array'
+      default: []
+      items:
+        type: 'string'
     flags:
       type: 'array'
       default: []
@@ -30,6 +37,9 @@ module.exports =
     @subscriptions.add atom.config.observe 'linter-gjslint.gjslintIgnoreList',
       (gjslintIgnoreList) =>
         @gjslintIgnoreList = gjslintIgnoreList
+    @subscriptions.add atom.config.observe 'linter-gjslint.gjslintCustomJsDocTagsList',
+      (gjslintCustomJsDocTagsList) =>
+        @gjslintCustomJsDocTagsList = gjslintCustomJsDocTagsList
     @subscriptions.add atom.config.observe 'linter-gjslint.flags',
       (flags) =>
         @flags = flags
@@ -59,6 +69,9 @@ module.exports =
           if @gjslintIgnoreList.length != 0
             errorsToDisable = @gjslintIgnoreList.join ','
             params = params.concat ('--disable=' + errorsToDisable)
+          if @gjslintCustomJsDocTagsList.length != 0
+            jsDocTagsToAllow = @gjslintCustomJsDocTagsList.join ','
+            params = params.concat ('--custom_jsdoc_tags=' + jsDocTagsToAllow)
           params = params.concat [
             '--nobeep',
             '--quiet',
