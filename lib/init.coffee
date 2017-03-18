@@ -89,7 +89,7 @@ module.exports =
 
             lines.forEach (msg) =>
               XRegExp.forEach msg, regex, (match, i) =>
-                range = helpers.rangeFromLineNumber(editor, match.line - 1)
+                range = helpers.generateRange(editor, match.line - 1)
                 messages.push @buildMsg(match, filePath, range)
 
             return messages
