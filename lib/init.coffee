@@ -77,7 +77,7 @@ module.exports =
             '--quiet',
             tmpFilePath
           ]
-          return helpers.exec(@executablePath, params, {cwd}).then (stdout) =>
+          return helpers.exec(@executablePath, params, {cwd, ignoreExitCode: true}).then (stdout) =>
             regex = XRegExp '^(?<line>\\d+), E:(?<code>[^:]+): (?<message>.+)$',
               's'
 
