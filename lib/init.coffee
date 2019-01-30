@@ -29,7 +29,7 @@ module.exports =
       items:
         type: 'string'
   activate: ->
-    require('atom-package-deps').install()
+    require('atom-package-deps').install('linter-gjslint')
     @subscriptions = new CompositeDisposable
     @subscriptions.add atom.config.observe 'linter-gjslint.executablePath',
       (executablePath) =>
