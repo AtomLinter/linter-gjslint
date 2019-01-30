@@ -46,12 +46,13 @@ module.exports =
   deactivate: ->
     @subscriptions.dispose()
   buildMsg: (match, filePath, range) ->
-    text = 'E:' + match.code + ' - ' + match.message
+    excerpt = 'E:' + match.code + ' - ' + match.message
     return {
-      text: text
-      type: 'error'
-      filePath: filePath
-      range: range
+      severity: 'error'
+      excerpt: excerpt
+      location:
+        file: filePath
+        position: range
     }
 
   provideLinter: ->
@@ -60,7 +61,7 @@ module.exports =
       name: 'gjslint'
       grammarScopes: ['source.js', 'source.js.jquery', 'text.html.basic']
       scope: 'file'
-      lintOnFly: true
+      lintsOnChange: true
       lint: (editor) =>
         filePath = editor.getPath()
         cwd = path.dirname(filePath)
